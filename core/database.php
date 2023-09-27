@@ -32,6 +32,14 @@ class Database
         return $record;
     }
 
+    public function show_many($table, $column, $value)
+    {
+        $sql = "SELECT * FROM `$table` WHERE $column = $value";
+        $result = $this->conn->query($sql);
+        $records = $result->fetch_all(MYSQLI_ASSOC);
+        return $records;
+    }
+
     public function create($table, $data)
     {
         $keys = array_keys($data);
